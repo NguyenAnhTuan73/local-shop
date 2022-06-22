@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../acssets/logo.svg";
 import leftIcon from "../../acssets/left-icon.svg";
 import search from "../../acssets/search.svg";
@@ -24,9 +25,11 @@ const Start = () => {
           </div>
         </div>
         <div className=" text-black text-lg font-semibold rounded-full bg-bg">
-          <button className=" px-9 py-3 leading-7 w-[250px] ">
-            Đăng nhập/ Đăng kí
-          </button>
+          <Link to="/login">
+            <button className=" px-9 py-3 leading-7 w-[250px] ">
+              Đăng nhập/ Đăng kí
+            </button>
+          </Link>
         </div>
       </div>
       <div className="flex items-center mt-7  max-w-[774px] h-12 bg-bg mx-auto rounded-md px-4 py-[7px] ">

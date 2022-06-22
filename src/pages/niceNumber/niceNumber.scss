@@ -1,0 +1,36 @@
+.nice-number {
+  position: relative;
+  background-size: cover;
+  background-position: top center;
+  //   background-repeat: no-repeat;
+}
+
+.bg-nice-number {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.navigate {
+  position: absolute;
+  top: 20px;
+  left: 60px;
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.main-concetp {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.item-nice-number {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+}
