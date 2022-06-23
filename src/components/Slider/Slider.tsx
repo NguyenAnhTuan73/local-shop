@@ -1,20 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
-
-// import "swiper/swiper.min.css";
-// import "swiper/components/effect-coverflow/effect-coverflow.min.css";
-// import "swiper/components/pagination/pagination.min.css";
-// import "swiper/components/navigation/navigation.min.css";
 
 import data from "../data/data";
 
 import "./slider.scss";
 
 const Slider = () => {
+  const navigate = useNavigate();
   return (
     <div className="">
       <Swiper
@@ -32,7 +28,10 @@ const Slider = () => {
       >
         {data.map((item, i) => (
           <SwiperSlide>
-            <div className="slider-item">
+            <div
+              onClick={() => navigate(item.path)}
+              className="slider-item cursor-pointer"
+            >
               <h2>{item.title}</h2>
               <img src={item.src} alt="" />
             </div>

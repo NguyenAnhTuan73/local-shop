@@ -1,18 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import loginImg from "../../acssets/images/img2.png";
-import leftIcon from "../../acssets/left-icon-black.svg";
+import leftIcon from "../../acssets/socical-icon/left-icon-black.svg";
 import "../../pages/style/index.scss";
-// import "./login.scss";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative section-container ">
       <div className="absotule  navigate-icon">
-        <Link to="/">
-          <img src={leftIcon} alt="" />
-        </Link>
+        <img onClick={() => navigate("/")} src={leftIcon} alt="" />
       </div>
       <div className=" flex items-center relative ">
         <div className="w-1/2 ">
@@ -36,10 +34,14 @@ const Login = () => {
                     message: "Nhập email hoặc số điện thoại",
                   },
                 ]}
-                label="Email hoặc số điện thoại*"
+                label={
+                  <label style={{ fontSize: "16px", fontWeight: "bold" }}>
+                    Email hoặc số điện thoại*
+                  </label>
+                }
               >
                 <Input
-                  className="py-[14px] pl-5 mb-5"
+                  className="py-[14px] pl-5 mb-5 text-[16px]"
                   placeholder="placeholder"
                 />
               </Form.Item>
@@ -53,10 +55,14 @@ const Login = () => {
                     message: "Nhập mật khẩu",
                   },
                 ]}
-                label="Nhập mật khẩu"
+                label={
+                  <label style={{ fontSize: "16px", fontWeight: "bold" }}>
+                    Nhập mật khẩu*
+                  </label>
+                }
               >
                 <Input.Password
-                  className="py-[14px] pl-5"
+                  className="py-[14px] pl-5 text-[16px]"
                   placeholder="placeholder"
                 />
               </Form.Item>
@@ -66,24 +72,33 @@ const Login = () => {
                   Chính sách quyền riêng tư của myLocal.vn
                 </span>
               </Form.Item>
-              <Link to="/reset-password">
-                <p className="remember-pw">Quên mật khẩu?</p>
-              </Link>
+
+              <p
+                onClick={() => navigate("/reset-password")}
+                className=" text-[16px] remember-pw cursor-pointer hover:text-[#FF4D4F] transition duration-300 ease-in-out"
+              >
+                Quên mật khẩu?
+              </p>
+
               <Form.Item>
                 <Button
-                  className="mt-8 mb-5 rounded-md text-[18px] leading-[28.08px] h-[48px]"
+                  className="mt-8 mb-5 rounded-md text-[18px] leading-[28.08px] h-[48px] "
                   danger
                   block
                   type="primary"
+                  onClick={() => navigate("/nice-number")}
                 >
-                  <Link to="/nice-number">Đăng nhập</Link>
+                  Đăng nhập
                 </Button>
               </Form.Item>
               <p className="w-full text-center text-[14px]">
-                Bạn chưa có tài khoản?{" "}
-                <Link to="/resgister">
-                  <span className="font-bold">Đăng ký</span>
-                </Link>
+                Bạn chưa có tài khoản? {/* <Link to="/resgister"> */}
+                <span
+                  onClick={() => navigate("/resgister")}
+                  className="font-bold cursor-pointer hover:text-[#FF4D4F] transition duration-300 ease-in-out"
+                >
+                  Đăng ký
+                </span>
               </p>
             </Form>
           </div>

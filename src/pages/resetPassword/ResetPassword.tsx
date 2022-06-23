@@ -1,17 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import resImg from "../../acssets/images/img5.png";
-import leftIcon from "../../acssets/left-icon.svg";
+import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import "../../pages/style/index.scss";
 
 const ResetPassword = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative section-container ">
       <div className="absotule  navigate-icon">
-        <Link to="/login">
-          <img src={leftIcon} alt="" />
-        </Link>
+        <img onClick={() => navigate("/login")} src={leftIcon} alt="" />
       </div>
       <div className=" flex items-center relative ">
         <div className="w-1/2 ">
@@ -54,15 +53,19 @@ const ResetPassword = () => {
                   danger
                   block
                   type="primary"
+                  onClick={() => navigate("confirm")}
                 >
-                  <Link to="/reset-password/confirm">Gửi mã xác nhận</Link>
+                  Gửi mã xác nhận
                 </Button>
               </Form.Item>
               <p className="w-full text-center text-[14px]">
                 Bạn chưa có tài khoản?{" "}
-                <Link to="/resgister">
-                  <span className="font-bold">Đăng ký</span>
-                </Link>
+                <span
+                  onClick={() => navigate("/resgister")}
+                  className="font-bold cursor-pointer hover:text-[#FF4D4F] transition duration-300 ease-in-out"
+                >
+                  Đăng ký
+                </span>
               </p>
             </Form>
           </div>

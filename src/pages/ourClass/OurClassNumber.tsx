@@ -1,14 +1,14 @@
 import React from "react";
 import { Form, Input, Select, Button } from "antd";
 import { Link } from "react-router-dom";
-import bg from "../../acssets/bg/bg-numarals.png";
+import bg from "../../acssets/bg/bg-our-class.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
-import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
-import "./numerals.scss";
+import SurfaceOurClass from "./surfaceOutClass/SufaceOutClass";
+import "./ourClassNumber.scss";
 
-const Numerals = () => {
+const OurClassNumber = () => {
   return (
     <div
       className="section-container relative nice-number "
@@ -23,55 +23,51 @@ const Numerals = () => {
             <img className="logo" src={logo} alt="" />
           </Link>
         </div>
-        <div className="w-[500px] h-[544px] bg-[#00000099]   main-concept rounded-[30px] ">
-          <div className="mx-12 my-10 ">
+        <div className="w-[500px] h-[540px] bg-[#00000099]   main-concept rounded-[30px] ">
+          <div className="mx-12 my-9 ">
             <Form layout="vertical">
-              <Form.Item className="text-white mb-[52px]">
-                <h1 className="text-[32px] text-white font-semibold mb-2">
-                  Thần số học
+              <Form.Item className="text-white">
+                <h1 className="text-[32px] leading-[40px] text-white font-semibold mb-2">
+                  Lớp chúng mình
                 </h1>
                 <p className="text-[16px]">
                   Vui lòng nhập thông tin dưới đây để tiếp tục
                 </p>
               </Form.Item>
               <Form.Item
-                label="Họ và tên*"
-                name="Họ và tên*"
+                style={{ color: "white", fontSize: "16px" }}
+                label={
+                  <label style={{ color: "white", fontSize: "16px" }}>
+                    Số thành viên
+                  </label>
+                }
+                name="Số thành viên*"
+                rules={[{ required: true }]}
+                className="mt-[52px]"
+              >
+                <Input
+                  className="h-[52px] rounded-md text-[16px]"
+                  placeholder="Nhập số"
+                />
+              </Form.Item>
+              <Form.Item
+                label={
+                  <label style={{ color: "white", fontSize: "16px" }}>
+                    Số mong muốn
+                  </label>
+                }
+                name="Số mong muốn*"
                 rules={[{ required: true }]}
               >
                 <Input
                   className="h-[52px] rounded-md text-[16px]"
-                  placeholder="Placeholder"
+                  placeholder="Nhập số"
                 />
               </Form.Item>
-              <Form.Item
-                name="Ngày tháng năm sinh*"
-                label="Ngày tháng năm sinh*"
-                rules={[{ required: true }]}
-                className="mb-2 text-white text-[16px] "
-              >
-                <div className=" flex w-full h-[52px] ">
-                  <Input className=" rounded-md text-[16px]" placeholder="DD" />
-                  <div className="mx-4 w-[124px] rounded-md">
-                    <Select
-                      defaultValue="MM"
-                      style={{
-                        width: "124px",
-                        height: "52px",
-                      }}
-                      className="slect-month rounded-md leading-[52px] flex items-center "
-                    ></Select>
-                  </div>
-                  <Input
-                    className=" rounded-md text-[16px]"
-                    placeholder="YYYY"
-                  />
-                </div>
-              </Form.Item>
 
-              <Form.Item className="mt-[80px]">
+              <Form.Item className="mt-[59px]">
                 <p className="text-[16px] text-white ">
-                  <span className="font-semibold underline underline-offset-1 cursor-pointer hover:text-[#FF4D4F] ease duration-300">
+                  <span className="font-semibold mr-1 underline underline-offset-1 cursor-pointer hover:text-[#FF4D4F] ease duration-300">
                     Nhấn vào đây
                   </span>
                   để xem lại thông tin giới thiệu
@@ -91,10 +87,10 @@ const Numerals = () => {
         </div>
       </div>
       <div className="surface-idol-number">
-        <SurfaceNumerals />
+        <SurfaceOurClass />
       </div>
     </div>
   );
 };
 
-export default Numerals;
+export default OurClassNumber;

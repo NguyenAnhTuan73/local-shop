@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Form, Input, Button } from "antd";
 import resImg from "../../acssets/images/img4.png";
-import leftIcon from "../../acssets/left-icon.svg";
+import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import "../../pages/style/index.scss";
 
 const Confirm = () => {

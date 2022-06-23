@@ -22,7 +22,7 @@
   left: 50%;
   transform: translateX(-50%);
 }
-.main-concept {
+.main-concetp {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -33,19 +33,4 @@
     background-color: rgba(0, 0, 0, 0.4);
     cursor: pointer;
   }
-}
-.slect-month > .ant-select-selector {
-  height: 100% !important;
-  border-radius: 6px !important;
-}
-
-.ant-form-item > .ant-form-item-label > label {
-  font-weight: 600;
-
-  font-size: 16px;
-}
-
-.ant-select-selection-item {
-  line-height: 52px;
-  font-size: 16px;
 }

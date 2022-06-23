@@ -1,18 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import logo from "../../acssets/logo.svg";
-import leftIcon from "../../acssets/left-icon.svg";
-import search from "../../acssets/search.svg";
-import logoFooter from "../../acssets/logoFooter.svg";
-import rightIcon from "../../acssets/right-icon.svg";
-import upIcon from "../../acssets/up-icon.svg";
-import phoneIcon from "../../acssets/phone-icon.svg";
-import locationIcon from "../../acssets/location-icon.svg";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../../acssets/socical-icon/logo.svg";
+import leftIcon from "../../acssets//socical-icon/left-icon.svg";
+import search from "../../acssets//socical-icon/search.svg";
+import logoFooter from "../../acssets/socical-icon/logoFooter.svg";
+import rightIcon from "../../acssets/socical-icon/right-icon.svg";
+import upIcon from "../../acssets/socical-icon/up-icon.svg";
+import phoneIcon from "../../acssets/socical-icon/phone-icon.svg";
+import locationIcon from "../../acssets/socical-icon/location-icon.svg";
 import Slider from "../../components/Slider/Slider";
 import Surface from "./surface/Surface";
 import "./start.scss";
 
 const Start = () => {
+  const navigate = useNavigate();
   return (
     <div className=" w-[1440px] h-[1205px] mx-auto bg-main start ">
       <div className="h-[88px] flex items-center justify-between px-16 pt-6">
@@ -25,11 +26,14 @@ const Start = () => {
           </div>
         </div>
         <div className=" text-black text-lg font-semibold rounded-full bg-bg">
-          <Link to="/login">
-            <button className=" px-9 py-3 leading-7 w-[250px] ">
-              Đăng nhập/ Đăng kí
-            </button>
-          </Link>
+          {/* <Link to="/login"> */}
+          <button
+            onClick={() => navigate("login")}
+            className=" px-9 py-3 leading-7 w-[250px] cursor-pointer hover:text-[#FF4D4F] transition duration-300 ease-in-out "
+          >
+            Đăng nhập/ Đăng kí
+          </button>
+          {/* </Link> */}
         </div>
       </div>
       <div className="flex items-center mt-7  max-w-[774px] h-12 bg-bg mx-auto rounded-md px-4 py-[7px] ">
