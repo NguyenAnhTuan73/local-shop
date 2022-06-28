@@ -28,7 +28,7 @@ const Start = () => {
         <div className=" text-black text-lg font-semibold rounded-full bg-bg">
           {/* <Link to="/login"> */}
           <button
-            onClick={() => navigate("login")}
+            onClick={() => navigate("/login")}
             className=" px-9 py-3 leading-7 w-[250px] cursor-pointer hover:text-[#FF4D4F] transition duration-300 ease-in-out "
           >
             Đăng nhập/ Đăng kí

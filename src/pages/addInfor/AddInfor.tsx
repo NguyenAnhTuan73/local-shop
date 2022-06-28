@@ -4,7 +4,7 @@ import { Form, Input, Select, TimePicker, Checkbox, Button } from "antd";
 import type { Moment } from "moment";
 import moment from "moment";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import bg from "../../acssets/nice-number-img/nn-bg.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
@@ -21,6 +21,14 @@ for (let i = 1; i <= 12; i++) {
   );
 }
 const AddInfor = () => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const params = useParams();
+  const ClickForm = () => {
+    switch (pathname) {
+      case "":
+    }
+  };
   return (
     <div
       className="section-container relative nice-number "
@@ -119,6 +127,10 @@ const AddInfor = () => {
                   type="primary"
                   className="flex
                 items-center justify-center rounded-lg h-[52px] w-full mt-6 text-[16px] font-semibold"
+                  onClick={() => {
+                    console.log("data:", location.pathname, "param", params);
+                    navigate("position");
+                  }}
                 >
                   Tiếp tục <img className="ml-3" src={rightIcon} alt="" />
                 </Button>

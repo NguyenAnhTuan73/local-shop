@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bg from "../../acssets/nice-number-img/nn-bg.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
@@ -9,6 +9,7 @@ import SurfaceNiceNumber from "./surfaceNiceNumber/SurfaceNiceNumber";
 import "./niceNumber.scss";
 
 const NiceNumber = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="section-container relative nice-number "
@@ -25,15 +26,18 @@ const NiceNumber = () => {
         </div>
         <div className="w-[376px] h-[456px]  main-concetp ">
           {dataNiceNumber.map((item, i) => (
-            <Link key={i} to="/nice-number/add-information">
-              <div className="flex items-center item-nice-number justify-left mb-6  rounded-[20px] h-[72px] w-full bg-[#00000099]">
-                <img src={item.img} alt="" />
-                <p className="text-left text-white font-semibold text-[18px]">
-                  {item.title}
-                </p>
-                <img className="ml-auto" src={item.right} alt="" />
-              </div>
-            </Link>
+            // <Link key={i} to={`add-information`}>
+            <div
+              onClick={() => navigate("add-information")}
+              className="flex items-center item-nice-number justify-left mb-6  rounded-[20px] h-[72px] w-full bg-[#00000099]"
+            >
+              <img src={item.img} alt="" />
+              <p className="text-left text-white font-semibold text-[18px]">
+                {item.title}
+              </p>
+              <img className="ml-auto" src={item.right} alt="" />
+            </div>
+            // </Link>
           ))}
         </div>
       </div>
