@@ -15,12 +15,18 @@ const PositionDefaulf = () => {
   return (
     <div className="mt-[36px] ml-[110px] mr-[50px]">
       <div className="">
-        <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px]">
-          <div className="icon mr-3">
-            <span className="">i</span>
-          </div>
-          Số thăng quan tiến chức
-        </h1>
+        <div className="flex w-full">
+          <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px] w-2/3">
+            <div className="icon mr-3">
+              <span className="">i</span>
+            </div>
+            Số thăng quan tiến chức
+          </h1>
+          <h1 className="text-[24px] mb-5 font-semibold loading-[33.6px] w-1/3">
+            Luận giải
+          </h1>
+        </div>
+
         <div className="flex w-full">
           <div className="w-2/3 ">
             <div className="flex">
@@ -101,9 +107,6 @@ const PositionDefaulf = () => {
           </div>
           <div className="w-1/3">
             <div className="ml-5">
-              <h1 className="text-[24px] mb-5 font-semibold loading-[33.6px]">
-                Luận giải
-              </h1>
               <p className="loading-[24px]">
                 Chọn{" "}
                 <span

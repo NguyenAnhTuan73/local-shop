@@ -34,16 +34,22 @@ const dataPositionViewDetail = [
   {
     sub: "Phân tích ngũ hành",
     img: image5,
-    span1: "Kim",
-    span2: "Mộc",
-    span3: "Thuỷ",
-    span4: "Hoả",
-    span5: "Thổ",
-    imgspan1: kim,
-    imaspan2: moc,
-    imgspan3: thuy,
-    imgspan4: hoa,
-    imgspan5: tho,
+    data: [
+      { span: "Kim", imgspan: kim, num: "1" },
+      { span: "Mộc", imgspan: moc, num: "3" },
+      { span: "Thuỷ", imgspan: thuy, num: "2" },
+      { span: "Hoả", imgspan: hoa, num: "1" },
+      { span: "Thổ", imgspan: tho, num: "3" },
+    ],
+    des: `Sinh 14/5/2990 (Âm lịch), mạng Thổ
+    Thổ (0,5)=3
+    Tương sinh là Hoả (2,7) = 1
+    Xét thêm điểm ngũ hành
+    Kim (4,9) = 1
+    Thuỷ (1,6) = 2
+    Mộc (3,8) = 3
+    Vậy số 090 123 4567 đối với ngày sinh 14/05/1990 (Âm lịch) mạng thổ có số điểm = 1+0,4 = 1,4/2 = 0,7 - 7 điểm -> Đạt >=50% -> hợp mạng`,
   },
 ];
+
 export default dataPositionViewDetail;

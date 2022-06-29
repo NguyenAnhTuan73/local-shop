@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Select, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import bg from "../../acssets/bg/bg-numarals.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
@@ -9,6 +9,7 @@ import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
 import "./numerals.scss";
 
 const Numerals = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="section-container relative nice-number "
@@ -82,6 +83,7 @@ const Numerals = () => {
                   type="primary"
                   className="flex
                 items-center justify-center rounded-lg h-[52px] w-full mt-6 text-[16px] font-semibold"
+                  onClick={() => navigate("list-number")}
                 >
                   Tiếp tục <img className="ml-3" src={rightIcon} alt="" />
                 </Button>

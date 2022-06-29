@@ -21,7 +21,7 @@ import OurClassNumber from "../pages/ourClass/OurClassNumber";
 import FamilyNumber from "../pages/familyNumber/FamilyNumber";
 import PositionViewDetial from "../pages/niceNumber/position/positionChild/PositionViewDetail";
 import PositionDefaulf from "../pages/niceNumber/position/positionChild/PositionDefaulf";
-
+import ListNumber from "../pages/listNumber/ListNumber";
 const RoutesNavigate = () => {
   return (
     <Routes>
@@ -63,6 +63,8 @@ const RoutesNavigate = () => {
       <Route path="/number-idol-and-fan" element={<NumberIdol />} />
       <Route path="/number-our-class" element={<OurClassNumber />} />
       <Route path="/number-family" element={<FamilyNumber />} />
+      <Route path="/:nameUrl/list-number" element={<ListNumber />} />
+
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Select, Button } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import bg from "../../acssets/bg/bg-our-class.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
@@ -9,6 +9,8 @@ import SurfaceOurClass from "./surfaceOutClass/SufaceOutClass";
 import "./ourClassNumber.scss";
 
 const OurClassNumber = () => {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
   return (
     <div
       className="section-container relative nice-number "
@@ -78,6 +80,7 @@ const OurClassNumber = () => {
                   type="primary"
                   className="flex
                 items-center justify-center rounded-lg h-[52px] w-full mt-6 text-[16px] font-semibold"
+                  onClick={() => navigate("list-number")}
                 >
                   Tiếp tục <img className="ml-3" src={rightIcon} alt="" />
                 </Button>

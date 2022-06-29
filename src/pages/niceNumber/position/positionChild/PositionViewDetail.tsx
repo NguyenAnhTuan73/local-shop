@@ -15,12 +15,15 @@ const PositionViewDetail = () => {
   return (
     <div className="mt-[36px] ml-[110px] mr-[50px]">
       <div className="">
-        <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px]">
-          <div className="icon mr-3">
-            <span className="">i</span>
-          </div>
-          Số thăng quan tiến chức
-        </h1>
+        <div className="flex w-full mb-5">
+          <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px] w-2/3 mx-6">
+            Số thăng quan tiến chức
+          </h1>
+          <h1 className="text-[24px] mb-5 font-semibold loading-[33.6px] pl-[10px] w-1/3 mx-6">
+            Luận giải
+          </h1>
+        </div>
+
         <div className="flex w-full">
           <div className="w-2/3 ">
             <div className="flex">
@@ -101,16 +104,35 @@ const PositionViewDetail = () => {
           </div>
           <div className="w-1/3">
             <div className="ml-5">
-              <h1 className="text-[24px] mb-5 font-semibold loading-[33.6px]">
-                Luận giải
-              </h1>
-              <div className="">
+              <div className="overflow-auto  h-[682px] ">
                 {dataPositionViewDetail.map((item, i) => (
-                  <div className="" key={i}>
-                    <img src={item.img} alt="" />
-                    <div className="">
-                      <p>{item.title}</p>
-                      <p>{item.sub}</p>
+                  <div className="flex flex-col mb-3 py-4 px-[15px] rounded-[20px] border-[1px] border-[#E3E3E3]">
+                    <div className="flex items-center   " key={i}>
+                      <img className="mr-4" src={item.img} alt="" />
+
+                      <div className="">
+                        <p className="text-[16px] loading-[24px]">
+                          {item.title}
+                        </p>
+                        <p className="text-[16px] loading-[24px] font-semibold">
+                          {item.sub}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex mt-6">
+                      {item.data?.map((itemChild, i) => (
+                        <div
+                          key={i}
+                          className=" flex flex-col items-center mr-2"
+                        >
+                          <h5>{itemChild.span}</h5>
+                          <img src={itemChild.imgspan} alt="" />
+                          <p>{itemChild.num}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4">
+                      <p>{item.des}</p>
                     </div>
                   </div>
                 ))}
