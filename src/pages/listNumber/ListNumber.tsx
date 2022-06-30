@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 import { Checkbox, Button } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import dataListNumber from "../../components/data-list-number/dataListNumber";
+import PopUp from "../popup/PopUp";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
 import search from "../../acssets/socical-icon/search.svg";
@@ -14,8 +15,11 @@ const ListNumber = () => {
   const navigate = useNavigate();
   const [arrayData, setArrayData] = useState<any>([]);
   const [lengthData, setLengthData] = useState(0);
+  // toggle modal
+  const [statusModal, setStatusModal] = useState<any>(false);
   const { nameUrl } = useParams();
   console.log("params", nameUrl);
+
   const onChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
     let status = e.target.checked;
@@ -35,6 +39,12 @@ const ListNumber = () => {
     }
     return;
   };
+  // reload page
+  const handleReload = () => {
+    setStatusModal(!statusModal);
+    console.log("data", statusModal);
+    // window.location.reload(false);
+  };
   return (
     <div className="w-[1440px] h-[1120px] mx-auto bg-white">
       <div className="">
@@ -43,6 +53,7 @@ const ListNumber = () => {
             return (
               <>
                 <div
+                  key={i}
                   className=" h-[386px] w-full relative "
                   style={{ backgroundImage: `url(${item.bg})` }}
                 >
@@ -52,7 +63,11 @@ const ListNumber = () => {
                   >
                     <div className=" absotute  flex items-center pt-3 z-10">
                       <div className="navigate">
-                        <img src={leftIcon} alt="" />
+                        <img
+                          onClick={() => navigate(`/${nameUrl}`)}
+                          src={leftIcon}
+                          alt=""
+                        />
                       </div>
                       <div className="logo pt-6 ">
                         <img className=" cursor-pointer " src={logo} alt="" />
@@ -88,7 +103,7 @@ const ListNumber = () => {
                     <div className=" flex justify-between">
                       <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px] ">
                         <div className="icon mr-3 nav ">
-                          <div className="nav-child">
+                          <div onClick={handleReload} className="nav-child">
                             <p>Nhấn vào đây để xem lại cách tìm số</p>
                           </div>
                           <span className="">i</span>
@@ -189,6 +204,9 @@ const ListNumber = () => {
           }
           return;
         })}
+      </div>
+      <div className="">
+        {statusModal ? <PopUp status={handleReload} /> : ""}
       </div>
     </div>
   );

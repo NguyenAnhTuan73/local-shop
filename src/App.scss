@@ -4,9 +4,6 @@
   box-sizing: border-box;
 }
 
-li {
-  list-style-type: none;
-}
 a {
   text-decoration: none;
   color: inherit;
@@ -16,7 +13,7 @@ input {
 }
 .section-container {
   width: 1440px;
-  height: 900px;
+  height: auto;
   margin: 0 auto;
   background-color: white;
 }

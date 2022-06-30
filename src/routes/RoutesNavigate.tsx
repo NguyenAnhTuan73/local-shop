@@ -22,6 +22,7 @@ import FamilyNumber from "../pages/familyNumber/FamilyNumber";
 import PositionViewDetial from "../pages/niceNumber/position/positionChild/PositionViewDetail";
 import PositionDefaulf from "../pages/niceNumber/position/positionChild/PositionDefaulf";
 import ListNumber from "../pages/listNumber/ListNumber";
+import CustomerInfor from "../pages/inforCustomer/CustomerInfor";
 const RoutesNavigate = () => {
   return (
     <Routes>
@@ -66,6 +67,8 @@ const RoutesNavigate = () => {
       <Route path="/:nameUrl/list-number" element={<ListNumber />} />
 
       <Route path="*" element={<NotFound />} />
+      {/* customer information buy sim */}
+      <Route path="/customer-information" element={<CustomerInfor />} />
     </Routes>
   );
 };

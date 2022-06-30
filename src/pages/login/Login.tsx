@@ -86,7 +86,7 @@ const Login = () => {
                   danger
                   block
                   type="primary"
-                  onClick={() => navigate("/nice-number")}
+                  onClick={() => navigate("/customer-information")}
                 >
                   Đăng nhập
                 </Button>
