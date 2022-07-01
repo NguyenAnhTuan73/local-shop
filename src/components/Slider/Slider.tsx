@@ -5,11 +5,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
-import data from "../data/data";
-
 import "./slider.scss";
 
-const Slider = () => {
+const Slider = ({ data }: any) => {
   const navigate = useNavigate();
   return (
     <div className="">
@@ -26,9 +24,10 @@ const Slider = () => {
         modules={[Pagination, Navigation]}
         className="mySwiper h-full"
       >
-        {data.map((item, i) => (
+        {data.map((item: any, i: number) => (
           <SwiperSlide>
             <div
+              key={i}
               onClick={() => navigate(item.path)}
               className="slider-item cursor-pointer"
             >

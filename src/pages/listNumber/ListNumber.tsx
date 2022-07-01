@@ -9,6 +9,7 @@ import logo from "../../acssets/socical-icon/logo.svg";
 import search from "../../acssets/socical-icon/search.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import ui from "../../acssets/socical-icon/UI.png";
+import SurfaceFamilyNumber from "../familyNumber/surfaceFamilyNumber/SurfaceFamilyNumber";
 import "./listNumber.scss";
 
 const ListNumber = () => {
@@ -208,6 +209,7 @@ const ListNumber = () => {
       <div className="">
         {statusModal ? <PopUp status={handleReload} /> : ""}
       </div>
+      {nameUrl === "number-family" ? <SurfaceFamilyNumber /> : ""}
     </div>
   );
 };

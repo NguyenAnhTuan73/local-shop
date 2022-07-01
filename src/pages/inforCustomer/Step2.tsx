@@ -1,27 +1,26 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import family from "../../acssets/images/img4.png";
-import dataCustomer from "../../components/data-customer/dataCustomer";
+import dataCustomer, {
+  DataCustomer,
+} from "../../components/data-customer/dataCustomer";
 import PopupCustomer from "../popup-customer/PopupCustomer";
-import a68 from "../../acssets/customer-infor/POPUP 6A68.png";
-import a99s from "../../acssets/customer-infor/POPUP 12A99S.png";
-import a89s from "../../acssets/customer-infor/POPUP 12A89S.png";
+
 const Step2 = () => {
   const [status, setStatus] = useState(false);
-  const handleShowPackage = (item: any) => {
-    setStatus(!status);
-    // let dataImg;
-    // switch (item) {
-    //   case "6A68":
-    //     return (dataImg = a68);
-    //   case "12A99S":
-    //     return (dataImg = a99s);
-    //   case "12A89S":
-    //     return (dataImg = a89s);
-    //   default:
-    //     return console.log("conlai");
-    // }
-    console.log("hello", item);
+  const [curentImage, setCurentImage] = useState<DataCustomer | null>(null);
+  const navigate = useNavigate();
+
+  const handleShowPackage = (item?: DataCustomer): void => {
+    setStatus(false);
+    if (item?.des === "Xem chi tiết") {
+      setCurentImage(item);
+      setStatus(true);
+    } else if (item?.des === "Đăng ký gói cước") {
+      navigate("package-payment");
+    }
   };
+
   return (
     <div className="mt-9">
       <div className="">
@@ -52,52 +51,57 @@ const Step2 = () => {
         </h1>
         <div className="">
           {dataCustomer.map((item, index) => (
-            <div
-              key={index}
-              className=" flex justify-between items-center p-4 "
-            >
-              <div className="">
-                <p className="font-semibold text-[18px] loading-[156%] text-[#2C3137] mb-3">
-                  {item.number}
-                </p>
-                <p
-                  className="text-[14px] leading-[160%] py-1 px-4 font-semibold text-center rounded-2xl "
-                  style={{
-                    backgroundColor:
-                      item.sub === "12A99S"
-                        ? "#3B82F6"
-                        : item.sub === "12A89S"
-                        ? "#16A34A"
-                        : item.sub === "6A68"
-                        ? "#EF4444"
-                        : "#EDEDED",
-                    color: item.sub === "Chưa có gói" ? "#565656" : "#fff",
-                  }}
-                >
-                  {item.sub}
-                </p>
+            <>
+              <div
+                key={index}
+                className=" flex justify-between items-center p-4 "
+              >
+                <div className="">
+                  <p className="font-semibold text-[18px] loading-[156%] text-[#2C3137] mb-3">
+                    {item.number}
+                  </p>
+                  <p
+                    className="text-[14px] leading-[160%] py-1 px-4 font-semibold text-center rounded-2xl "
+                    style={{
+                      backgroundColor:
+                        item.sub === "12A99S"
+                          ? "#3B82F6"
+                          : item.sub === "12A89S"
+                          ? "#16A34A"
+                          : item.sub === "6A68"
+                          ? "#EF4444"
+                          : "#EDEDED",
+                      color: item.sub === "Chưa có gói" ? "#565656" : "#fff",
+                    }}
+                  >
+                    {item.sub}
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <img className="mr-3" src={item.img} alt="" />
+                  <p
+                    style={{
+                      color:
+                        item.des === "Đăng ký gói cước" ? "#2563EB" : "#646464",
+                    }}
+                    className="text-[16px] font-medium cursor-pointer"
+                    onClick={() => handleShowPackage(item)}
+                  >
+                    {item.des}
+                  </p>
+                </div>
               </div>
-              <div className="flex items-center">
-                <img className="mr-3" src={item.img} alt="" />
-                <p
-                  style={{
-                    color:
-                      item.des === "Đăng ký gói cước" ? "#2563EB" : "#646464",
-                  }}
-                  className="text-[16px] font-medium"
-                  onClick={() => handleShowPackage(item.sub)}
-                >
-                  {item.des}
-                </p>
-              </div>
-            </div>
+            </>
           ))}
+          <div className="">
+            {status === true ? (
+              <PopupCustomer
+                handleShowPackage={handleShowPackage}
+                item={curentImage}
+              />
+            ) : null}
+          </div>
         </div>
-      </div>
-      <div className="">
-        {status === true ? (
-          <PopupCustomer handleShowPackage={handleShowPackage} />
-        ) : null}
       </div>
     </div>
   );

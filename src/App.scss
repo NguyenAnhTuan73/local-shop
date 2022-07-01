@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -13,7 +15,7 @@ input {
 }
 .section-container {
   width: 1440px;
-  height: auto;
+  height: 900px;
   margin: 0 auto;
   background-color: white;
 }

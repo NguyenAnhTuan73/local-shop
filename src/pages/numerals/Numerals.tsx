@@ -6,7 +6,6 @@ import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
 import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
-import "./numerals.scss";
 
 const Numerals = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Numerals = () => {
     >
       <div className=" bg-nice-number w-full h-full">
         <div className="flex mt-4 items-center">
-          <Link to="/login">
+          <Link to="/">
             <img className="navigate" src={leftIcon} alt="" />
           </Link>
           <Link to="/">

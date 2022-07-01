@@ -9,6 +9,8 @@ import search from "../../acssets/socical-icon/search.svg";
 import img1 from "../../acssets/nice-number-img/nn1.svg";
 import dataNiceNumber from "../../components/data-nine-number/dataNiceNumber";
 import SurfaceIdolNumber from "./surfaceIdolNumber/SurfaceIdolNumber";
+import Slider from "../../components/Slider/Slider";
+import { dataIdol } from "../../components/data/data";
 import "./numberIdol.scss";
 
 const NumberIdol = () => {
@@ -20,7 +22,7 @@ const NumberIdol = () => {
     >
       <div className=" bg-nice-number w-full h-full">
         <div className="flex mt-4 mb-[52px] items-center">
-          <Link to="/login">
+          <Link to="/">
             <img className="navigate" src={leftIcon} alt="" />
           </Link>
           <Link to="/">
@@ -37,8 +39,11 @@ const NumberIdol = () => {
             />
           </div>
           <p className="font-semibold text-[24px] text-white leading-[28px]">
-            Thông tin nghệ sĩ
+            Thông tin nghệ sĩ nổi bật
           </p>
+          <div className="">
+            <Slider data={dataIdol} />
+          </div>
           <div className="w-[575px] h-[378px] bg-[#00000099]   main-concept rounded-[30px] ">
             <div className="mx-12 my-10 ">
               <Form layout="vertical">

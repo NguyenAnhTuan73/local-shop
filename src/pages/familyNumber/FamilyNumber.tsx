@@ -1,98 +1,218 @@
-import React from "react";
-import { Form, Input, Select, Button } from "antd";
-import { Link, useNavigate } from "react-router-dom";
-import bg from "../../acssets/bg/bg-numarals.png";
+import React, { useEffect, useState } from "react";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { Checkbox, Button } from "antd";
+import type { CheckboxChangeEvent } from "antd/es/checkbox";
+import dataListNumber from "../../components/data-list-number/dataListNumber";
+import PopUp from "../popup/PopUp";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
-import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
+import search from "../../acssets/socical-icon/search.svg";
+import rightIcon from "../../acssets/socical-icon/right-icon.svg";
+import ui from "../../acssets/socical-icon/UI.png";
 // import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
+import SurfaceFamilyNumber from "./surfaceFamilyNumber/SurfaceFamilyNumber";
 import "./familyNumber.scss";
 
 const FamilyNumber = () => {
   const navigate = useNavigate();
-  return (
-    <div
-      className="section-container relative nice-number "
-      style={{ backgroundImage: `url(${bg})` }}
-    >
-      <div className=" bg-nice-number w-full h-full">
-        <div className="flex mt-4 items-center">
-          <Link to="/login">
-            <img className="navigate" src={leftIcon} alt="" />
-          </Link>
-          <Link to="/">
-            <img className="logo" src={logo} alt="" />
-          </Link>
-        </div>
-        <div className="w-[500px] h-[544px] bg-[#00000099]   main-concept rounded-[30px] ">
-          <div className="mx-12 my-10 ">
-            <Form layout="vertical">
-              <Form.Item className="text-white mb-[52px]">
-                <h1 className="text-[32px] text-white font-semibold mb-2">
-                  Thần số học
-                </h1>
-                <p className="text-[16px]">
-                  Vui lòng nhập thông tin dưới đây để tiếp tục
-                </p>
-              </Form.Item>
-              <Form.Item
-                label="Họ và tên*"
-                name="Họ và tên*"
-                rules={[{ required: true }]}
-              >
-                <Input
-                  className="h-[52px] rounded-md text-[16px]"
-                  placeholder="Placeholder"
-                />
-              </Form.Item>
-              <Form.Item
-                name="Ngày tháng năm sinh*"
-                label="Ngày tháng năm sinh*"
-                rules={[{ required: true }]}
-                className="mb-2 text-white text-[16px] "
-              >
-                <div className=" flex w-full h-[52px] ">
-                  <Input className=" rounded-md text-[16px]" placeholder="DD" />
-                  <div className="mx-4 w-[124px] rounded-md">
-                    <Select
-                      defaultValue="MM"
-                      style={{
-                        width: "124px",
-                        height: "52px",
-                      }}
-                      className="slect-month rounded-md leading-[52px] flex items-center "
-                    ></Select>
-                  </div>
-                  <Input
-                    className=" rounded-md text-[16px]"
-                    placeholder="YYYY"
-                  />
-                </div>
-              </Form.Item>
+  const [arrayData, setArrayData] = useState<any>([]);
+  const [lengthData, setLengthData] = useState(0);
+  // toggle modal
+  const [statusModal, setStatusModal] = useState<any>(false);
+  const { pathname } = useParams();
+  console.log("params", pathname);
 
-              <Form.Item className="mt-[80px]">
-                <p className="text-[16px] text-white ">
-                  <span className="font-semibold underline underline-offset-1 cursor-pointer hover:text-[#FF4D4F] ease duration-300">
-                    Nhấn vào đây
-                  </span>
-                  để xem lại thông tin giới thiệu
-                </p>
-                <Button
-                  danger
-                  block
-                  type="primary"
-                  className="flex
-                items-center justify-center rounded-lg h-[52px] w-full mt-6 text-[16px] font-semibold"
-                  onClick={() => navigate("list-number")}
+  const onChange = (e: CheckboxChangeEvent) => {
+    console.log(`checked = ${e.target.checked}`);
+    let status = e.target.checked;
+    if (status === true) {
+      arrayData.push(status);
+      setLengthData(arrayData.length + 1);
+      console.log("length", lengthData);
+    } else {
+      arrayData.shift();
+      setLengthData(arrayData.length - 1);
+      console.log("length", lengthData);
+    }
+  };
+  const hadleBuySim = () => {
+    if (lengthData > 2) {
+      navigate("/login");
+    }
+    return;
+  };
+  // reload page
+  const handleReload = () => {
+    setStatusModal(!statusModal);
+    console.log("data", statusModal);
+    // window.location.reload(false);
+  };
+  return (
+    <div className="w-[1440px] h-[1120px] mx-auto bg-white">
+      <div className="">
+        {dataListNumber.map((item, i) => {
+          if (item.url === pathname) {
+            return (
+              <>
+                <div
+                  key={i}
+                  className=" h-[386px] w-full relative "
+                  style={{ backgroundImage: `url(${item.bg})` }}
                 >
-                  Tiếp tục <img className="ml-3" src={rightIcon} alt="" />
-                </Button>
-              </Form.Item>
-            </Form>
-          </div>
-        </div>
+                  <div
+                    className="absotute top-0 left-0 w-full h-full  "
+                    // style={{ background: "#000000", opacity: "0.3" }}
+                  >
+                    <div className=" absotute  flex items-center pt-3 z-10">
+                      <div className="navigate">
+                        <img
+                          onClick={() => navigate("/")}
+                          src={leftIcon}
+                          alt=""
+                        />
+                      </div>
+                      <div className="logo pt-6 ">
+                        <img className=" cursor-pointer " src={logo} alt="" />
+                      </div>
+                    </div>
+                    <div className="w-[774px] translate-x-[-50%]  left-1/2 absolute bottom-[80px] ">
+                      <div className="flex items-center   w-full h-12 bg-bg mx-auto rounded-md px-4 py-[7px] ">
+                        <img src={search} alt="" />
+                        <input
+                          type="text"
+                          className=" ml-[10px] text-[16px] outline-0  bg-bg"
+                          placeholder="Tìm số..."
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mx-[135px] mt-9 flex ">
+                  <div className=" w-1/4 ">
+                    <h1 className="text-[24px] loading-[33.6px] font-semibold mb-7">
+                      {item.title}
+                    </h1>
+                    <div className="text-[16px] text-[#4D4D4D] loading-[174%]">
+                      <p>
+                        {item.p} <b>{item.span}</b>
+                        {item.p1} <br />
+                        <br />
+                        {item.p2}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="w-3/4 mt-1">
+                    <div className=" flex justify-between">
+                      <h1 className="flex items-center text-[24px] loading-[33.6px] font-semibold mb-[18px] ">
+                        <div className="icon mr-3 nav ">
+                          <div onClick={handleReload} className="nav-child">
+                            <p>Nhấn vào đây để xem lại cách tìm số</p>
+                          </div>
+                          <span className="">i</span>
+                        </div>
+                        {item.titleList}
+                      </h1>
+
+                      <p
+                        style={{
+                          visibility: lengthData > 2 ? "hidden" : "visible",
+                        }}
+                        className="flex items-center text-white bg-[#FF4B5A] p-3 rounded-xl mb-7"
+                      >
+                        <img className="mr-3" src={ui} alt="" />
+                        {item.note}
+                      </p>
+                    </div>
+                    <div className="flex w-full">
+                      <div className="w-1/2  mx-6">
+                        <ul className=" flex w-full justify-between items-center mb-2 border-b-[1px] border-[#eff1f9] font-semibold">
+                          <li className="flex-1 text-left">Số thuê bao</li>
+                          <li className="flex-1 text-left">Giá tiền</li>
+                          <li className="flex-1 text-left">Giá KM</li>
+                        </ul>
+                        <div className="mt-[34px]">
+                          {item.dataListNumber?.map((item, i) => (
+                            <div className=" flex justify-between text-[#070D14] mb-5 ">
+                              <p className=" flex flex-1 text-[16px] loading-[150%] ">
+                                <div className="mr-2">
+                                  <Checkbox
+                                    onChange={(e) => onChange(e)}
+                                  ></Checkbox>
+                                </div>
+                                {item.num}
+                              </p>
+                              <p className="flex-1 text-[#565656] line-through text-[16px] loading-[150%]">
+                                {item.price1}
+                              </p>
+                              <p className="flex-1 text-[#242424] font-semibold text-[16px] loading-[150%]">
+                                {item.price2}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="w-1/2  mx-6 ">
+                        <ul className=" flex w-full justify-between items-center mb-2 border-b-[1px] border-[#eff1f9] font-semibold">
+                          <li className="flex-1 text-left">Số thuê bao</li>
+                          <li className="flex-1 text-left">Giá tiền</li>
+                          <li className="flex-1 text-left">Giá KM</li>
+                        </ul>
+                        <div className="mt-[34px]">
+                          {item.dataListNumber?.map((item, i) => (
+                            <div className=" flex justify-between text-[#070D14] mb-5 ">
+                              <p className=" flex flex-1 text-[16px] loading-[150%] ">
+                                <div className="mr-2">
+                                  <Checkbox
+                                    onChange={(e) => onChange(e)}
+                                  ></Checkbox>
+                                </div>
+                                {item.num}
+                              </p>
+                              <p className="flex-1 text-[#565656] line-through text-[16px] loading-[150%]">
+                                {item.price1}
+                              </p>
+                              <p className="flex-1 text-[#242424] font-semibold text-[16px] loading-[150%]">
+                                {item.price2}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className=" w-full text-center">
+                  <button
+                    style={{
+                      cursor: lengthData > 2 ? "pointer" : "no-dop",
+                      backgroundColor: lengthData > 2 ? "#FF4B5A" : "#FEF2F2",
+                      color: lengthData > 2 ? "#fff" : "#FF4B5A",
+                    }}
+                    className="boder-0 text-[#FCA5A5] text-[18px] loading-[156%] font-semibold px-[48px] py-[10px] min-w-[202px] rounded-xl mt-[30px]  "
+                  >
+                    <div onClick={hadleBuySim} className="flex items-center">
+                      Đặt mua
+                      <img
+                        className="ml-3"
+                        style={{ color: lengthData > 1 ? "#fff" : "#FF4B5A" }}
+                        src={rightIcon}
+                        alt=""
+                      />
+                    </div>
+                  </button>
+                </div>
+              </>
+            );
+          }
+          return;
+        })}
       </div>
-      <div className="surface-idol-number">{/* <SurfaceNumerals /> */}</div>
+      <div className="">
+        {statusModal ? <PopUp status={handleReload} /> : ""}
+      </div>
+      <div className="">
+        <SurfaceFamilyNumber />
+      </div>
     </div>
   );
 };

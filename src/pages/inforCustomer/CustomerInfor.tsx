@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, message, Steps } from "antd";
+import { useNavigate } from "react-router-dom";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -47,6 +48,24 @@ const steps = [
 
 const CustomerInfor = () => {
   const [current, setCurrent] = useState(0);
+  const [minutes, setMinutes] = useState(60);
+  const [seconds, setSeconds] = useState(0);
+  const navigate = useNavigate();
+  let timer: any;
+
+  useEffect(() => {
+    timer = setInterval(() => {
+      setSeconds(seconds - 1);
+      if (seconds === 0) {
+        setMinutes(minutes - 1);
+        setSeconds(59);
+      }
+      if (minutes === 0 && seconds === 1) {
+        navigate("/login");
+      }
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [seconds]);
 
   const next = () => {
     setCurrent(current + 1);
@@ -89,8 +108,14 @@ const CustomerInfor = () => {
               <div className="">
                 <div className=" flex items-center justify-center mb-4">
                   <img className="mr-2" src={ui} alt="" />
-                  <p>
-                    Thời gian thanh toán còn lại <b>60</b> phút <b>00</b> giây
+                  <p
+                    style={{
+                      color: minutes === 0 && seconds <= 30 ? "#FF2F48" : "",
+                    }}
+                  >
+                    Thời gian thanh toán còn lại{" "}
+                    <b>{minutes < 10 ? "0" + minutes : minutes}</b> phút{" "}
+                    <b>{seconds < 10 ? "0" + seconds : seconds}</b> giây
                   </p>
                 </div>
                 <button

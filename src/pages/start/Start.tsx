@@ -10,12 +10,13 @@ import phoneIcon from "../../acssets/socical-icon/phone-icon.svg";
 import locationIcon from "../../acssets/socical-icon/location-icon.svg";
 import Slider from "../../components/Slider/Slider";
 import Surface from "./surface/Surface";
+import data from "../../components/data/data";
 import "./start.scss";
 
 const Start = () => {
   const navigate = useNavigate();
   return (
-    <div className=" w-[1440px] h-[1205px] mx-auto bg-main start ">
+    <div id="start" className=" w-[1440px] h-[1205px] mx-auto bg-main start ">
       <div className="h-[88px] flex items-center justify-between px-16 pt-6">
         <div className=" flex items-center justify-between w-[714px]">
           <div className="w-6 h-6 flex items-center justify-center">
@@ -40,12 +41,12 @@ const Start = () => {
         <img src={search} alt="" />
         <input
           type="text"
-          className=" ml-[10px] outline-0  bg-bg"
+          className=" ml-[10px] outline-0  bg-bg w-full"
           placeholder="Tìm số"
         />
       </div>
       <div className="body mt-[60px] w-[1110px] h-[560px]  mx-auto mb-24">
-        <Slider />
+        <Slider data={data} />
       </div>
       <div className="footer relative w-full h-[330px] bg-footer ">
         <div className=" h-full flex">
@@ -98,7 +99,9 @@ const Start = () => {
                   </div>
                 </div>
                 <div className="to-top-page">
-                  <p className="to-top-page-p text-white">Về đầu trang</p>
+                  <p className="to-top-page-p text-white">
+                    <a href="#start">Về đầu trang</a>{" "}
+                  </p>
                   <img
                     className="w-[14px] h-[14px] cursor-pointer"
                     src={upIcon}

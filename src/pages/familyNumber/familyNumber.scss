@@ -1,0 +1,32 @@
+.nav {
+  position: relative;
+
+  .nav-child {
+    background-color: #131313;
+    padding: 8px 12px;
+    font-size: 14px;
+    width: 250px;
+    color: white;
+    position: absolute;
+    border-radius: 10px;
+    top: -250%;
+    left: -40%;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    &::after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(45deg, #131313 50%, transparent 50%);
+      transform: rotate(315deg);
+      position: absolute;
+      top: 65%;
+      left: 6%;
+    }
+  }
+}
+.nav:hover .nav-child {
+  cursor: pointer;
+  visibility: visible;
+  transition: all 0.3s ease;
+}

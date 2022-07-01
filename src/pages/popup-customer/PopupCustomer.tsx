@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
 import searchHeader from "../../acssets/position-img/header.png";
+import a68 from "../../acssets/customer-infor/POPUP 6A68.png";
+import a99s from "../../acssets/customer-infor/POPUP 12A99S.png";
+import a89s from "../../acssets/customer-infor/POPUP 12A89S.png";
 import { Button, Modal } from "antd";
 
-const PopUpCustomer = (props: any) => {
-  console.log("props", props);
+import { DataCustomer } from "../../components/data-customer/dataCustomer";
+const PopUpCustomer = ({
+  item,
+  handleShowPackage,
+}: {
+  item: DataCustomer | null;
+  handleShowPackage: (item?: DataCustomer) => void;
+}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -20,7 +29,7 @@ const PopUpCustomer = (props: any) => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
-    props.handleShowPackage();
+    handleShowPackage();
   };
 
   return (
@@ -30,17 +39,17 @@ const PopUpCustomer = (props: any) => {
           <Modal
             visible={isModalVisible}
             footer={null}
-            onOk={handleOk}
+            // onOk={handleOk}
             onCancel={handleCancel}
             bodyStyle={{
-              height: "594px",
-              padding: "16px",
+              height: "500px",
+              width: "500px",
             }}
-            width="378px"
+            width="500px"
           >
             <div className="">
               <div className="mb-4">
-                <img src={searchHeader} alt="" />
+                <img src={item?.imgItem} alt="" />
               </div>
             </div>
           </Modal>

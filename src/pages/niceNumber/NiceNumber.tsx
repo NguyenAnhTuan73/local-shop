@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import bg from "../../acssets/nice-number-img/nn-bg.png";
+import nineNumberBg from "../../acssets/nice-number-img/nn-bg.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
 import img1 from "../../acssets/nice-number-img/nn1.svg";
@@ -13,11 +13,11 @@ const NiceNumber = () => {
   return (
     <div
       className="section-container relative nice-number "
-      style={{ backgroundImage: `url(${bg})` }}
+      style={{ backgroundImage: `url(${nineNumberBg})` }}
     >
       <div className=" bg-nice-number w-full h-full">
         <div className="flex mt-4 items-center">
-          <Link to="/login">
+          <Link to="/">
             <img className="navigate" src={leftIcon} alt="" />
           </Link>
           <Link to="/">
@@ -28,6 +28,7 @@ const NiceNumber = () => {
           {dataNiceNumber.map((item, i) => (
             // <Link key={i} to={`add-information`}>
             <div
+              key={i}
               onClick={() => navigate("add-information")}
               className="flex items-center item-nice-number justify-left mb-6  rounded-[20px] h-[72px] w-full bg-[#00000099]"
             >

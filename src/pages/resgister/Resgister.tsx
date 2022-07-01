@@ -33,7 +33,9 @@ const Resgister = () => {
                     required: true,
                     message: "Nhập email hoặc số điện thoại",
                   },
+                  { min: 6 },
                 ]}
+                hasFeedback
                 label="Email hoặc số điện thoại*"
               >
                 <Input
@@ -50,7 +52,15 @@ const Resgister = () => {
                     required: true,
                     message: "Nhập mật khẩu",
                   },
+                  { min: 8 },
+                  {
+                    validator: (_, value) =>
+                      value
+                        ? Promise.resolve()
+                        : Promise.reject("Password does not match criteria."),
+                  },
                 ]}
+                hasFeedback
                 label="Nhập mật khẩu"
               >
                 <Input.Password

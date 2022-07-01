@@ -33,7 +33,10 @@ const Login = () => {
                     required: true,
                     message: "Nhập email hoặc số điện thoại",
                   },
+                  { whitespace: true },
+                  { min: 6 },
                 ]}
+                hasFeedback
                 label={
                   <label style={{ fontSize: "16px", fontWeight: "bold" }}>
                     Email hoặc số điện thoại*
@@ -54,7 +57,9 @@ const Login = () => {
                     required: true,
                     message: "Nhập mật khẩu",
                   },
+                  { min: 6 },
                 ]}
+                hasFeedback
                 label={
                   <label style={{ fontSize: "16px", fontWeight: "bold" }}>
                     Nhập mật khẩu*

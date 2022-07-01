@@ -23,6 +23,7 @@ import PositionViewDetial from "../pages/niceNumber/position/positionChild/Posit
 import PositionDefaulf from "../pages/niceNumber/position/positionChild/PositionDefaulf";
 import ListNumber from "../pages/listNumber/ListNumber";
 import CustomerInfor from "../pages/inforCustomer/CustomerInfor";
+import PackagePayment from "../pages/inforCustomer/package-payment/PackagePayment";
 const RoutesNavigate = () => {
   return (
     <Routes>
@@ -69,6 +70,11 @@ const RoutesNavigate = () => {
       <Route path="*" element={<NotFound />} />
       {/* customer information buy sim */}
       <Route path="/customer-information" element={<CustomerInfor />} />
+
+      <Route
+        path="/customer-information/package-payment"
+        element={<PackagePayment />}
+      />
     </Routes>
   );
 };
