@@ -6,11 +6,11 @@ import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
 import search from "../../acssets/socical-icon/search.svg";
-import img1 from "../../acssets/nice-number-img/nn1.svg";
-import dataNiceNumber from "../../components/data-nine-number/dataNiceNumber";
-import SurfaceIdolNumber from "./surfaceIdolNumber/SurfaceIdolNumber";
-import Slider from "../../components/Slider/Slider";
-import { dataIdol } from "../../components/data/data";
+
+import { dataIdol } from "../../components/data-surface/dataSurface";
+import Surface from "../surface/Surface";
+import SliderIdol from "../../components/slider-idol/SliderIdol";
+
 import "./numberIdol.scss";
 
 const NumberIdol = () => {
@@ -38,13 +38,13 @@ const NumberIdol = () => {
               placeholder="Tìm kiếm tên Idol..."
             />
           </div>
-          <p className="font-semibold text-[24px] text-white leading-[28px]">
+          <p className="font-semibold text-[24px] text-white leading-[28px] mb-9">
             Thông tin nghệ sĩ nổi bật
           </p>
-          <div className="">
-            <Slider data={dataIdol} />
+          <div className="mb-10">
+            <SliderIdol />
           </div>
-          <div className="w-[575px] h-[378px] bg-[#00000099]   main-concept rounded-[30px] ">
+          <div className="w-[575px] h-[378px] bg-[#00000099]   main-concept inform-idol rounded-[30px] ">
             <div className="mx-12 my-10 ">
               <Form layout="vertical">
                 <Form.Item className="text-white mb-[52px]">
@@ -106,7 +106,7 @@ const NumberIdol = () => {
         </div>
       </div>
       <div className="surface-idol-number">
-        <SurfaceIdolNumber />
+        <Surface data={dataIdol} />
       </div>
     </div>
   );

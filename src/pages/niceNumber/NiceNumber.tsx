@@ -1,11 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import nineNumberBg from "../../acssets/nice-number-img/nn-bg.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
 import img1 from "../../acssets/nice-number-img/nn1.svg";
-import dataNiceNumber from "../../components/data-nine-number/dataNiceNumber";
+import DataNiceNumber from "../../components/data-nine-number/dataNiceNumber";
 import SurfaceNiceNumber from "./surfaceNiceNumber/SurfaceNiceNumber";
+import { dataNiceNumber } from "../../components/data-surface/dataSurface";
+import Surface from "../surface/Surface";
 import "./niceNumber.scss";
 
 const NiceNumber = () => {
@@ -25,7 +27,7 @@ const NiceNumber = () => {
           </Link>
         </div>
         <div className="w-[376px] h-[456px]  main-concetp ">
-          {dataNiceNumber.map((item, i) => (
+          {DataNiceNumber.map((item, i) => (
             // <Link key={i} to={`add-information`}>
             <div
               key={i}
@@ -43,7 +45,7 @@ const NiceNumber = () => {
         </div>
       </div>
       <div className="surface-nice-number">
-        <SurfaceNiceNumber />
+        <Surface data={dataNiceNumber} />
       </div>
     </div>
   );

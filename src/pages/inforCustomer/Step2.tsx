@@ -50,12 +50,9 @@ const Step2 = () => {
           DANH SÁCH SỐ
         </h1>
         <div className="">
-          {dataCustomer.map((item, index) => (
-            <>
-              <div
-                key={index}
-                className=" flex justify-between items-center p-4 "
-              >
+          {dataCustomer.map((item: any, i: number) => (
+            <div key={i}>
+              <div className=" flex justify-between items-center p-4 ">
                 <div className="">
                   <p className="font-semibold text-[18px] loading-[156%] text-[#2C3137] mb-3">
                     {item.number}
@@ -91,7 +88,7 @@ const Step2 = () => {
                   </p>
                 </div>
               </div>
-            </>
+            </div>
           ))}
           <div className="">
             {status === true ? (

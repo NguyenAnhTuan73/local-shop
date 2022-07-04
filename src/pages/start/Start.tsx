@@ -9,7 +9,7 @@ import upIcon from "../../acssets/socical-icon/up-icon.svg";
 import phoneIcon from "../../acssets/socical-icon/phone-icon.svg";
 import locationIcon from "../../acssets/socical-icon/location-icon.svg";
 import Slider from "../../components/Slider/Slider";
-import Surface from "./surface/Surface";
+import SurfaceStart from "./surfaceStart/SurfaceStart";
 import data from "../../components/data/data";
 import "./start.scss";
 
@@ -114,7 +114,7 @@ const Start = () => {
         </div>
       </div>
       <div className="surface-section">
-        <Surface />
+        <SurfaceStart />
       </div>
     </div>
   );

@@ -4,10 +4,10 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
+import dataIdol from "../data-idol-and-fan/dataIdol";
+import "./sliderIdol.scss";
 
-import "./slider.scss";
-
-const Slider = ({ data }: any) => {
+const SliderIdol = () => {
   const navigate = useNavigate();
   return (
     <div className="">
@@ -22,16 +22,16 @@ const Slider = ({ data }: any) => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper h-full"
+        className="mySwiper "
       >
-        {data.map((item: any, i: number) => (
-          <SwiperSlide key={i}>
+        {dataIdol.map((item: any, i: number) => (
+          <SwiperSlide>
             <div
-              onClick={() => navigate(item.path)}
-              className="slider-item cursor-pointer"
+              key={i}
+              //   onClick={() => navigate(item.path)}
+              className="slider-item-idol cursor-pointer"
             >
-              <h2>{item.title}</h2>
-              <img src={item.src} alt="" />
+              <img src={item.img} alt="" />
             </div>
           </SwiperSlide>
         ))}
@@ -40,4 +40,4 @@ const Slider = ({ data }: any) => {
   );
 };
 
-export default Slider;
+export default SliderIdol;

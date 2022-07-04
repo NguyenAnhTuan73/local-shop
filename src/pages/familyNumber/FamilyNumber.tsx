@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { Checkbox, Button } from "antd";
+import { Checkbox } from "antd";
 import type { CheckboxChangeEvent } from "antd/es/checkbox";
 import dataListNumber from "../../components/data-list-number/dataListNumber";
 import PopUp from "../popup/PopUp";
@@ -9,8 +9,9 @@ import logo from "../../acssets/socical-icon/logo.svg";
 import search from "../../acssets/socical-icon/search.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import ui from "../../acssets/socical-icon/UI.png";
-// import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
-import SurfaceFamilyNumber from "./surfaceFamilyNumber/SurfaceFamilyNumber";
+
+import Surface from "../surface/Surface";
+import { dataFamily } from "../../components/data-surface/dataSurface";
 import "./familyNumber.scss";
 
 const FamilyNumber = () => {
@@ -211,7 +212,7 @@ const FamilyNumber = () => {
         {statusModal ? <PopUp status={handleReload} /> : ""}
       </div>
       <div className="">
-        <SurfaceFamilyNumber />
+        <Surface data={dataFamily} />
       </div>
     </div>
   );

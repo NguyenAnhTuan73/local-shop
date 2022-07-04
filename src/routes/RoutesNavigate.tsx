@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 
 import Start from "../pages/start/Start";
 import Login from "../pages/login/Login";
@@ -24,6 +24,13 @@ import PositionDefaulf from "../pages/niceNumber/position/positionChild/Position
 import ListNumber from "../pages/listNumber/ListNumber";
 import CustomerInfor from "../pages/inforCustomer/CustomerInfor";
 import PackagePayment from "../pages/inforCustomer/package-payment/PackagePayment";
+// customer payment
+import Step1 from "../pages/inforCustomer/Step1";
+import Step2 from "../pages/inforCustomer/Step2";
+import Step3 from "../pages/inforCustomer/Step3";
+import Step4 from "../pages/inforCustomer/Step4";
+import Step5 from "../pages/inforCustomer/Step5";
+
 const RoutesNavigate = () => {
   return (
     <Routes>
@@ -69,12 +76,14 @@ const RoutesNavigate = () => {
 
       <Route path="*" element={<NotFound />} />
       {/* customer information buy sim */}
-      <Route path="/customer-information" element={<CustomerInfor />} />
-
-      <Route
-        path="/customer-information/package-payment"
-        element={<PackagePayment />}
-      />
+      <Route path="/customer-information" element={<CustomerInfor />}>
+        <Route path="steps-1" element={<Step1 />}></Route>
+        <Route path="steps-2" element={<Step2 />}></Route>
+        <Route path="steps-3" element={<Step3 />}></Route>
+        <Route path="steps-4" element={<Step4 />}></Route>
+        <Route path="steps-5" element={<Step5 />}></Route>
+      </Route>
+      <Route path="package-payment" element={<PackagePayment />} />
     </Routes>
   );
 };

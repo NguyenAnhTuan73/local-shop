@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, message, Steps } from "antd";
-import { useNavigate } from "react-router-dom";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
-import Step3 from "./Step3";
-import Step4 from "./Step4";
-import Step5 from "./Step5";
+import { Outlet, useNavigate, useSearchParams } from "react-router-dom";
+
 import logo from "../../acssets/socical-icon/logo - type - head.png";
 import leftIcon from "../../acssets/socical-icon/left-icon-black.svg";
 import Step1img from "../../acssets/customer-infor/Group 1.png";
@@ -13,7 +9,8 @@ import Step2img from "../../acssets/customer-infor/Group 2.png";
 import Step3img from "../../acssets/customer-infor/Group 3.png";
 import Step4img from "../../acssets/customer-infor/Group 4.png";
 import Step5img from "../../acssets/customer-infor/Group 5.png";
-import ui from "../../acssets/socical-icon/UIstep.png";
+import Timer from "../../components/timer/Timer";
+import Cart from "../../components/cart/Cart";
 import "./customerInfor.scss";
 
 const { Step } = Steps;
@@ -21,122 +18,114 @@ const { Step } = Steps;
 const steps = [
   {
     title: "Thông tin giữ số",
-    content: <Step1 />,
+
     icon: <Step1img />,
   },
   {
     title: "Chọn gói cước",
-    content: <Step2 />,
+
     icon: <Step2img />,
   },
   {
     title: "Thông tin giao hàng",
-    content: <Step3 />,
+
     icon: Step3img,
   },
   {
     title: "Thanh toán",
-    content: <Step4 />,
+
     icon: Step4img,
   },
   {
     title: "Hoàn tất đặt hàng",
-    content: <Step5 />,
+    // content: <Step5 />,
     icon: Step5img,
   },
 ];
 
 const CustomerInfor = () => {
   const [current, setCurrent] = useState(0);
-  const [minutes, setMinutes] = useState(60);
-  const [seconds, setSeconds] = useState(0);
-  const navigate = useNavigate();
-  let timer: any;
 
-  useEffect(() => {
-    timer = setInterval(() => {
-      setSeconds(seconds - 1);
-      if (seconds === 0) {
-        setMinutes(minutes - 1);
-        setSeconds(59);
-      }
-      if (minutes === 0 && seconds === 1) {
-        navigate("/login");
-      }
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [seconds]);
+  const [step, setStep] = useState(1);
+
+  const [resultsParams, setResultsParams] = useState("");
+
+  const navigate = useNavigate();
 
   const next = () => {
     setCurrent(current + 1);
+    setStep(step + 1);
+
+    navigate(`steps-${step + 1}`);
+    let dataUrl = location.href.slice(-7);
+    setResultsParams(dataUrl);
   };
 
   const prev = () => {
     setCurrent(current - 1);
+    setStep(step - 1);
+    navigate(step === 1 ? "/login" : `steps-${step - 1}`);
+    setResultsParams("");
   };
 
   return (
     <>
-      <div className="section-container h-full pb-[56px]">
-        <div className="w-full flex items-center relative  ">
-          <div className="absolute  top-5 left-[60px]">
-            <img
-              onClick={() => prev()}
-              className="cursor-pointer hover:text-[#FF364E]"
-              src={leftIcon}
-              alt=""
-            />
-          </div>
-          <div className="absolute left-1/2 top-3 ">
-            <img src={logo} alt="" />
-          </div>
-        </div>
-        <div className="w-[575px] mx-auto mt-[90px]">
-          <Steps current={current} labelPlacement="vertical">
-            {steps.map((item) => (
-              <Step key={item.title} title={item.title} />
-            ))}
-          </Steps>
-          <div className="steps-content">{steps[current].content}</div>
-          <div className="w-full text-center">
-            {/* {current > 0 && (
-              <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-                Previous
-              </Button>
-            )} */}
-            {current < steps.length - 1 && (
-              <div className="">
-                <div className=" flex items-center justify-center mb-4">
-                  <img className="mr-2" src={ui} alt="" />
-                  <p
-                    style={{
-                      color: minutes === 0 && seconds <= 30 ? "#FF2F48" : "",
-                    }}
-                  >
-                    Thời gian thanh toán còn lại{" "}
-                    <b>{minutes < 10 ? "0" + minutes : minutes}</b> phút{" "}
-                    <b>{seconds < 10 ? "0" + seconds : seconds}</b> giây
-                  </p>
-                </div>
-                <button
-                  className="bg-[#FEF2F2] text-[#FCA5A5] text-[18px] 
-              font-semibold loading-[156%] px-[196px] py-[10px] rounded-md"
-                  onClick={() => next()}
-                >
-                  Tiếp tục
-                </button>
+      <div
+        className="mx-auto"
+        style={{
+          display: resultsParams === "steps-3" ? "flex" : "",
+          justifyContent: "center",
+        }}
+      >
+        <div className="">
+          <div className="section-container h-full pb-[56px]">
+            <div className="w-full flex items-center relative  ">
+              <div className="absolute  top-5 left-[60px]">
+                <img
+                  onClick={() => prev()}
+                  className="cursor-pointer hover:text-[#FF364E]"
+                  src={leftIcon}
+                  alt=""
+                />
               </div>
-            )}
-            {current === steps.length - 1 && (
-              <Button
-                type="primary"
-                onClick={() => message.success("Processing complete!")}
-              >
-                Done
-              </Button>
-            )}
+              <div className="absolute left-1/2 top-3 ">
+                <img src={logo} alt="" />
+              </div>
+            </div>
+            <div className="w-[575px] mx-auto mt-[90px]">
+              <Steps current={current} labelPlacement="vertical">
+                {steps.map((item) => (
+                  <Step key={item.title} title={item.title} />
+                ))}
+              </Steps>
+
+              <div className="w-full text-center">
+                <Outlet />
+                {current < steps.length - 1 && (
+                  <div className="">
+                    <Timer />
+                    <button
+                      className="bg-[#FF4B5A] text-[#fff] text-[18px] 
+              font-semibold loading-[156%] px-[196px] py-[10px] rounded-md cursor-pointer"
+                      onClick={() => next()}
+                    >
+                      Tiếp tục
+                    </button>
+                  </div>
+                )}
+                {current === steps.length - 1 && (
+                  <Button
+                    type="primary"
+                    onClick={() => message.success("Processing complete!")}
+                  >
+                    Done
+                  </Button>
+                )}
+              </div>
+            </div>
           </div>
         </div>
+        {resultsParams === "steps-3" ? <Cart /> : ""}
       </div>
     </>
   );

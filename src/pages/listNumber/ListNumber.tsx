@@ -9,7 +9,9 @@ import logo from "../../acssets/socical-icon/logo.svg";
 import search from "../../acssets/socical-icon/search.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import ui from "../../acssets/socical-icon/UI.png";
-import SurfaceFamilyNumber from "../familyNumber/surfaceFamilyNumber/SurfaceFamilyNumber";
+
+import Surface from "../surface/Surface";
+import { dataFamily } from "../../components/data-surface/dataSurface";
 import "./listNumber.scss";
 
 const ListNumber = () => {
@@ -65,7 +67,11 @@ const ListNumber = () => {
                     <div className=" absotute  flex items-center pt-3 z-10">
                       <div className="navigate">
                         <img
-                          onClick={() => navigate(`/${nameUrl}`)}
+                          onClick={() =>
+                            navigate(
+                              nameUrl === "number-family" ? "/" : `/${nameUrl}`
+                            )
+                          }
                           src={leftIcon}
                           alt=""
                         />
@@ -209,7 +215,7 @@ const ListNumber = () => {
       <div className="">
         {statusModal ? <PopUp status={handleReload} /> : ""}
       </div>
-      {nameUrl === "number-family" ? <SurfaceFamilyNumber /> : ""}
+      {nameUrl === "number-family" ? <Surface data={dataFamily} /> : ""}
     </div>
   );
 };

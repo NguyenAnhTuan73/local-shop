@@ -5,8 +5,9 @@ import bg from "../../acssets/bg/bg-our-class.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
-import SurfaceOurClass from "./surfaceOutClass/SufaceOutClass";
 
+import Surface from "../surface/Surface";
+import { dataOurClass } from "../../components/data-surface/dataSurface";
 const OurClassNumber = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -89,7 +90,7 @@ const OurClassNumber = () => {
         </div>
       </div>
       <div className="surface-idol-number">
-        <SurfaceOurClass />
+        <Surface data={dataOurClass} />
       </div>
     </div>
   );

@@ -5,8 +5,9 @@ import bg from "../../acssets/bg/bg-numarals.png";
 import leftIcon from "../../acssets/socical-icon/left-icon.svg";
 import rightIcon from "../../acssets/socical-icon/right-icon.svg";
 import logo from "../../acssets/socical-icon/logo.svg";
-import SurfaceNumerals from "./surfaceNumerals/SurfaceNumerals";
 
+import { dataNumarals } from "../../components/data-surface/dataSurface";
+import Surface from "../surface/Surface";
 const Numerals = () => {
   const navigate = useNavigate();
   return (
@@ -92,7 +93,7 @@ const Numerals = () => {
         </div>
       </div>
       <div className="surface-idol-number">
-        <SurfaceNumerals />
+        <Surface data={dataNumarals} />
       </div>
     </div>
   );
